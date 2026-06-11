@@ -12,14 +12,14 @@ return new class extends Migration
             $table->id();
 
             $table->foreignId('supplier_id')
+                ->nullable()
                 ->constrained()
-                ->cascadeOnUpdate()
-                ->restrictOnDelete();
+                ->nullOnDelete();
 
             $table->foreignId('category_id')
+                ->nullable()
                 ->constrained()
-                ->cascadeOnUpdate()
-                ->restrictOnDelete();
+                ->nullOnDelete();
 
             $table->string('sku', 50)->unique();
             $table->string('name', 255);
