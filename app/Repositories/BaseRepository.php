@@ -2,9 +2,10 @@
 
 namespace App\Repositories;
 
+use App\Repositories\Contracts\BaseRepositoryInterface;
 use Illuminate\Database\Eloquent\Model;
 
-abstract class BaseRepository
+abstract class BaseRepository implements BaseRepositoryInterface
 {
     protected Model $model;
 
@@ -13,24 +14,47 @@ abstract class BaseRepository
         $this->model = $model;
     }
 
-    public function getAll()
+    protected function query()
     {
-        return $this->model->latest()->get();
+        return $this->model->newQuery();
     }
 
-    public function findById(int $id)
+    public function getAll()
     {
-        return $this->model->findOrFail($id);
+        return $this->query()
+            ->latest()
+            ->get();
+    }
+
+    public function paginate(
+        ?string $search = null,
+        int $perPage = 15
+    ) {
+        return $this->query()
+            ->latest()
+            ->paginate($perPage);
+    }
+
+    public function find(int $id)
+    {
+        return $this->query()->find($id);
+    }
+
+    public function findOrFail(int $id)
+    {
+        return $this->query()->findOrFail($id);
     }
 
     public function create(array $data)
     {
-        return $this->model->create($data);
+        return $this->query()->create($data);
     }
 
-    public function update(int $id, array $data)
-    {
-        $entity = $this->findById($id);
+    public function update(
+        int $id,
+        array $data
+    ) {
+        $entity = $this->findOrFail($id);
 
         $entity->update($data);
 
@@ -39,6 +63,6 @@ abstract class BaseRepository
 
     public function delete(int $id): bool
     {
-        return $this->findById($id)->delete();
+        return $this->findOrFail($id)->delete();
     }
 }

@@ -9,35 +9,45 @@ class CategorySeeder extends Seeder
 {
     public function run(): void
     {
-        Category::insert([
+        $now = now();
+
+        Category::upsert(
             [
-                'code' => 'CAT001',
-                'name' => 'Laptop',
-                'is_active' => true,
-                'created_at' => now(),
-                'updated_at' => now(),
+                [
+                    'code' => 'CAT001',
+                    'name' => 'Laptop',
+                    'is_active' => true,
+                    'created_at' => $now,
+                    'updated_at' => $now,
+                ],
+                [
+                    'code' => 'CAT002',
+                    'name' => 'Mouse',
+                    'is_active' => true,
+                    'created_at' => $now,
+                    'updated_at' => $now,
+                ],
+                [
+                    'code' => 'CAT003',
+                    'name' => 'Keyboard',
+                    'is_active' => true,
+                    'created_at' => $now,
+                    'updated_at' => $now,
+                ],
+                [
+                    'code' => 'CAT004',
+                    'name' => 'Monitor',
+                    'is_active' => true,
+                    'created_at' => $now,
+                    'updated_at' => $now,
+                ],
             ],
+            ['code'],
             [
-                'code' => 'CAT002',
-                'name' => 'Mouse',
-                'is_active' => true,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'code' => 'CAT003',
-                'name' => 'Keyboard',
-                'is_active' => true,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'code' => 'CAT004',
-                'name' => 'Monitor',
-                'is_active' => true,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-        ]);
+                'name',
+                'is_active',
+                'updated_at',
+            ]
+        );
     }
 }

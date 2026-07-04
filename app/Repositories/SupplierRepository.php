@@ -14,9 +14,9 @@ class SupplierRepository extends BaseRepository implements SupplierRepositoryInt
 
     public function paginate(
         ?string $search = null,
-        int $perPage = 10
+        int $perPage = 15
     ) {
-        return $this->model
+        return $this->query()
             ->when($search, function ($query) use ($search) {
                 $query->where('code', 'like', "%{$search}%")
                     ->orWhere('name', 'like', "%{$search}%");

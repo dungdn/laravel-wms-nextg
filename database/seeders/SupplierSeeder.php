@@ -9,34 +9,46 @@ class SupplierSeeder extends Seeder
 {
     public function run(): void
     {
-        Supplier::insert([
+        $now = now();
+
+        Supplier::upsert(
             [
-                'code' => 'SUP001',
-                'name' => 'Dell Vietnam',
-                'phone' => '0900000001',
-                'email' => 'sales@dell.vn',
-                'is_active' => true,
-                'created_at' => now(),
-                'updated_at' => now(),
+                [
+                    'code' => 'SUP001',
+                    'name' => 'Dell Vietnam',
+                    'phone' => '0900000001',
+                    'email' => 'sales@dell.vn',
+                    'is_active' => true,
+                    'created_at' => $now,
+                    'updated_at' => $now,
+                ],
+                [
+                    'code' => 'SUP002',
+                    'name' => 'Logitech Vietnam',
+                    'phone' => '0900000002',
+                    'email' => 'sales@logitech.vn',
+                    'is_active' => true,
+                    'created_at' => $now,
+                    'updated_at' => $now,
+                ],
+                [
+                    'code' => 'SUP003',
+                    'name' => 'Samsung Vietnam',
+                    'phone' => '0900000003',
+                    'email' => 'sales@samsung.vn',
+                    'is_active' => true,
+                    'created_at' => $now,
+                    'updated_at' => $now,
+                ],
             ],
+            ['code'], // khóa duy nhất để xác định bản ghi
             [
-                'code' => 'SUP002',
-                'name' => 'Logitech Vietnam',
-                'phone' => '0900000002',
-                'email' => 'sales@logitech.vn',
-                'is_active' => true,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'code' => 'SUP003',
-                'name' => 'Samsung Vietnam',
-                'phone' => '0900000003',
-                'email' => 'sales@samsung.vn',
-                'is_active' => true,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-        ]);
+                'name',
+                'phone',
+                'email',
+                'is_active',
+                'updated_at',
+            ]
+        );
     }
 }

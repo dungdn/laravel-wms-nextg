@@ -11,11 +11,4 @@ class SupplierService extends BaseService
     ) {
         $this->repository = $repository;
     }
-
-    public function paginate(
-        ?string $search = null,
-        int $perPage = 10
-    ) {
-        return $this->repository->paginate($search, $perPage);
-    }
 }

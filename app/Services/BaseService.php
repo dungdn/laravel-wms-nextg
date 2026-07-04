@@ -2,18 +2,32 @@
 
 namespace App\Services;
 
-class BaseService
+use App\Repositories\Contracts\BaseRepositoryInterface;
+
+abstract class BaseService
 {
-    protected $repository;
+    protected BaseRepositoryInterface $repository;
 
     public function getAll()
     {
         return $this->repository->getAll();
     }
 
-    public function findById(int $id)
+    public function paginate(
+        ?string $search = null,
+        int $perPage = 15
+    ) {
+        return $this->repository->paginate($search, $perPage);
+    }
+
+    public function find(int $id)
     {
-        return $this->repository->findById($id);
+        return $this->repository->find($id);
+    }
+
+    public function findOrFail(int $id)
+    {
+        return $this->repository->findOrFail($id);
     }
 
     public function create(array $data)
@@ -21,8 +35,10 @@ class BaseService
         return $this->repository->create($data);
     }
 
-    public function update(int $id, array $data)
-    {
+    public function update(
+        int $id,
+        array $data
+    ) {
         return $this->repository->update($id, $data);
     }
 

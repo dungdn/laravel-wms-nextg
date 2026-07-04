@@ -12,23 +12,23 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('suppliers', function (Blueprint $table) {
-        $table->id();
+            $table->id();
 
-        $table->string('code', 50)->unique();
-        $table->string('name', 255);
+            $table->string('code', 50)->unique();
+            $table->string('name', 255);
 
-        $table->string('contact_name')->nullable();
-        $table->string('phone', 50)->nullable();
-        $table->string('email')->nullable();
+            $table->string('contact_name')->nullable();
+            $table->string('phone', 50)->nullable();
+            $table->string('email')->nullable();
 
-        $table->text('address')->nullable();
+            $table->text('address')->nullable();
 
-        $table->boolean('is_active')->default(true);
+            $table->boolean('is_active')->default(true);
 
-        $table->timestamps();
+            $table->timestamps();
 
-        $table->index('name');
-    });
+            $table->index('name');
+        });
     }
 
     /**
