@@ -13,4 +13,9 @@ interface SupplierRepositoryInterface
     public function update(int $id, array $data);
 
     public function delete(int $id);
+
+    public function paginate(
+        ?string $search = null,
+        int $perPage = 10
+    );
 }

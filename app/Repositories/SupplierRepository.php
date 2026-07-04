@@ -11,4 +11,17 @@ class SupplierRepository extends BaseRepository implements SupplierRepositoryInt
     {
         parent::__construct($model);
     }
+
+    public function paginate(
+        ?string $search = null,
+        int $perPage = 10
+    ) {
+        return $this->model
+            ->when($search, function ($query) use ($search) {
+                $query->where('code', 'like', "%{$search}%")
+                    ->orWhere('name', 'like', "%{$search}%");
+            })
+            ->latest()
+            ->paginate($perPage);
+    }
 }
