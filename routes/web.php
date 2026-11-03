@@ -18,4 +18,8 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
+Route::view('dev/ui-components', 'dev.ui-components')
+    ->middleware(['auth'])
+    ->name('dev.ui-components');
+
 require __DIR__.'/auth.php';

@@ -7,7 +7,6 @@ interface BaseRepositoryInterface
     public function getAll();
 
     public function paginate(
-        ?string $search = null,
         int $perPage = 15
     );
 

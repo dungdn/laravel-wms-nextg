@@ -12,14 +12,16 @@ class SupplierRepository extends BaseRepository implements SupplierRepositoryInt
         parent::__construct($model);
     }
 
-    public function paginate(
+    public function paginateWithSearch(
         ?string $search = null,
         int $perPage = 15
     ) {
         return $this->query()
             ->when($search, function ($query) use ($search) {
-                $query->where('code', 'like', "%{$search}%")
-                    ->orWhere('name', 'like', "%{$search}%");
+                $query->where(function ($query) use ($search) {
+                    $query->where('code', 'like', "%{$search}%")
+                        ->orWhere('name', 'like', "%{$search}%");
+                });
             })
             ->latest()
             ->paginate($perPage);

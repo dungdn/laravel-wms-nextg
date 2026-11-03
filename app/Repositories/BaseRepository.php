@@ -27,7 +27,6 @@ abstract class BaseRepository implements BaseRepositoryInterface
     }
 
     public function paginate(
-        ?string $search = null,
         int $perPage = 15
     ) {
         return $this->query()

@@ -14,10 +14,9 @@ abstract class BaseService
     }
 
     public function paginate(
-        ?string $search = null,
         int $perPage = 15
     ) {
-        return $this->repository->paginate($search, $perPage);
+        return $this->repository->paginate($perPage);
     }
 
     public function find(int $id)
