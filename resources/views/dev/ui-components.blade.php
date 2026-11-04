@@ -14,22 +14,69 @@
                     Buttons
                 </h3>
 
-                <div class="flex flex-wrap gap-3">
-                    <x-ui.button>
-                        Primary
-                    </x-ui.button>
+                <div class="space-y-4">
+                    <div>
+                        <h4 class="text-sm font-medium text-gray-700 mb-2">Variants</h4>
+                        <div class="flex flex-wrap gap-3">
+                            <x-ui.button>
+                                Primary
+                            </x-ui.button>
 
-                    <x-ui.button variant="secondary">
-                        Secondary
-                    </x-ui.button>
+                            <x-ui.button variant="secondary">
+                                Secondary
+                            </x-ui.button>
 
-                    <x-ui.button variant="success">
-                        Success
-                    </x-ui.button>
+                            <x-ui.button variant="success">
+                                Success
+                            </x-ui.button>
 
-                    <x-ui.button variant="danger">
-                        Danger
-                    </x-ui.button>
+                            <x-ui.button variant="danger">
+                                Danger
+                            </x-ui.button>
+
+                            <x-ui.button variant="warning">
+                                Warning
+                            </x-ui.button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="text-sm font-medium text-gray-700 mb-2">Sizes</h4>
+                        <div class="flex flex-wrap items-center gap-3">
+                            <x-ui.button size="sm">
+                                Small (sm)
+                            </x-ui.button>
+
+                            <x-ui.button size="md">
+                                Medium (md)
+                            </x-ui.button>
+
+                            <x-ui.button size="lg">
+                                Large (lg)
+                            </x-ui.button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="text-sm font-medium text-gray-700 mb-2">Disabled State</h4>
+                        <div class="flex flex-wrap gap-3">
+                            <x-ui.button disabled>
+                                Primary
+                            </x-ui.button>
+
+                            <x-ui.button variant="secondary" disabled>
+                                Secondary
+                            </x-ui.button>
+
+                            <x-ui.button variant="success" disabled>
+                                Success
+                            </x-ui.button>
+
+                            <x-ui.button variant="danger" disabled>
+                                Danger
+                            </x-ui.button>
+                        </div>
+                    </div>
                 </div>
             </x-ui.card>
 
@@ -106,9 +153,12 @@
                                 </x-ui.badge>
                             </td>
 
-                            <td class="px-6 py-4 whitespace-nowrap text-right">
-                                <x-ui.button variant="secondary">
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
+                                <x-ui.button variant="secondary" size="sm">
                                     Edit
+                                </x-ui.button>
+                                <x-ui.button variant="danger" size="sm">
+                                    Delete
                                 </x-ui.button>
                             </td>
                         </tr>
@@ -128,9 +178,12 @@
                                 </x-ui.badge>
                             </td>
 
-                            <td class="px-6 py-4 whitespace-nowrap text-right">
-                                <x-ui.button variant="secondary">
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
+                                <x-ui.button variant="secondary" size="sm">
                                     Edit
+                                </x-ui.button>
+                                <x-ui.button variant="danger" size="sm">
+                                    Delete
                                 </x-ui.button>
                             </td>
                         </tr>
@@ -150,9 +203,12 @@
                                 </x-ui.badge>
                             </td>
 
-                            <td class="px-6 py-4 whitespace-nowrap text-right">
-                                <x-ui.button variant="secondary">
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
+                                <x-ui.button variant="secondary" size="sm">
                                     Edit
+                                </x-ui.button>
+                                <x-ui.button variant="danger" size="sm">
+                                    Delete
                                 </x-ui.button>
                             </td>
                         </tr>
