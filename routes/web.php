@@ -1,6 +1,8 @@
 <?php
 
-use App\Livewire\Supplier\Index;
+use App\Livewire\Category\Index as CategoryIndex;
+use App\Livewire\Product\Index as ProductIndex;
+use App\Livewire\Supplier\Index as SupplierIndex;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
@@ -10,8 +12,14 @@ Route::view('dashboard', 'dashboard')
     ->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/suppliers', Index::class)
+    Route::get('/suppliers', SupplierIndex::class)
         ->name('suppliers.index');
+
+    Route::get('/categories', CategoryIndex::class)
+        ->name('categories.index');
+
+    Route::get('/products', ProductIndex::class)
+        ->name('products.index');
 });
 
 Route::view('profile', 'profile')
