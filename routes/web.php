@@ -3,6 +3,7 @@
 use App\Livewire\Category\Index as CategoryIndex;
 use App\Livewire\Inventory\Index as InventoryIndex;
 use App\Livewire\Product\Index as ProductIndex;
+use App\Livewire\StockIn\Index as StockInIndex;
 use App\Livewire\Supplier\Index as SupplierIndex;
 use App\Livewire\Warehouse\Index as WarehouseIndex;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +29,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/inventory', InventoryIndex::class)
         ->name('inventory.index');
+
+    Route::get('/stock-ins', StockInIndex::class)
+        ->name('stock-ins.index');
 });
 
 Route::view('profile', 'profile')

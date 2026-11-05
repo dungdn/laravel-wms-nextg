@@ -6,10 +6,12 @@ use App\Repositories\CategoryRepository;
 use App\Repositories\Contracts\CategoryRepositoryInterface;
 use App\Repositories\Contracts\InventoryRepositoryInterface;
 use App\Repositories\Contracts\ProductRepositoryInterface;
+use App\Repositories\Contracts\StockInRepositoryInterface;
 use App\Repositories\Contracts\SupplierRepositoryInterface;
 use App\Repositories\Contracts\WarehouseRepositoryInterface;
 use App\Repositories\InventoryRepository;
 use App\Repositories\ProductRepository;
+use App\Repositories\StockInRepository;
 use App\Repositories\SupplierRepository;
 use App\Repositories\WarehouseRepository;
 use Illuminate\Support\ServiceProvider;
@@ -44,6 +46,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             InventoryRepositoryInterface::class,
             InventoryRepository::class
+        );
+
+        $this->app->bind(
+            StockInRepositoryInterface::class,
+            StockInRepository::class
         );
     }
 

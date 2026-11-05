@@ -62,4 +62,3 @@ class InventoryForm extends Form
         $this->resetValidation();
     }
 }
-
