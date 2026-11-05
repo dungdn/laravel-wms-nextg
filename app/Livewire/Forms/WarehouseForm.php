@@ -72,4 +72,3 @@ class WarehouseForm extends Form
         $this->resetValidation();
     }
 }
-

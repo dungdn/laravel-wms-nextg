@@ -4,9 +4,11 @@ namespace App\Providers;
 
 use App\Repositories\CategoryRepository;
 use App\Repositories\Contracts\CategoryRepositoryInterface;
+use App\Repositories\Contracts\InventoryRepositoryInterface;
 use App\Repositories\Contracts\ProductRepositoryInterface;
 use App\Repositories\Contracts\SupplierRepositoryInterface;
 use App\Repositories\Contracts\WarehouseRepositoryInterface;
+use App\Repositories\InventoryRepository;
 use App\Repositories\ProductRepository;
 use App\Repositories\SupplierRepository;
 use App\Repositories\WarehouseRepository;
@@ -37,6 +39,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             WarehouseRepositoryInterface::class,
             WarehouseRepository::class
+        );
+
+        $this->app->bind(
+            InventoryRepositoryInterface::class,
+            InventoryRepository::class
         );
     }
 

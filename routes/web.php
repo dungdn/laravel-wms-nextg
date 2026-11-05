@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Category\Index as CategoryIndex;
+use App\Livewire\Inventory\Index as InventoryIndex;
 use App\Livewire\Product\Index as ProductIndex;
 use App\Livewire\Supplier\Index as SupplierIndex;
 use App\Livewire\Warehouse\Index as WarehouseIndex;
@@ -24,6 +25,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/warehouses', WarehouseIndex::class)
         ->name('warehouses.index');
+
+    Route::get('/inventory', InventoryIndex::class)
+        ->name('inventory.index');
 });
 
 Route::view('profile', 'profile')
