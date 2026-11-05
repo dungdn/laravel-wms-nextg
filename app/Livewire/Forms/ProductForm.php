@@ -102,4 +102,3 @@ class ProductForm extends Form
         $this->resetValidation();
     }
 }
-
