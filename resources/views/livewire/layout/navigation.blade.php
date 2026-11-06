@@ -57,6 +57,10 @@ new class extends Component
                     <x-nav-link :href="route('stock-ins.index')" :active="request()->routeIs('stock-ins.*')" wire:navigate>
                         {{ __('Stock In') }}
                     </x-nav-link>
+
+                    <x-nav-link :href="route('stock-outs.index')" :active="request()->routeIs('stock-outs.*')" wire:navigate>
+                        {{ __('Stock Out') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -131,6 +135,10 @@ new class extends Component
 
             <x-responsive-nav-link :href="route('stock-ins.index')" :active="request()->routeIs('stock-ins.*')" wire:navigate>
                 {{ __('Stock In') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('stock-outs.index')" :active="request()->routeIs('stock-outs.*')" wire:navigate>
+                {{ __('Stock Out') }}
             </x-responsive-nav-link>
         </div>
 

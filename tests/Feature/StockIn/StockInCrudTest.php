@@ -295,4 +295,3 @@ class StockInCrudTest extends TestCase
             ->assertSee('Mechanical Keyboard');
     }
 }
-
