@@ -6,6 +6,7 @@ use App\Livewire\Product\Index as ProductIndex;
 use App\Livewire\PurchaseOrder\Index as PurchaseOrderIndex;
 use App\Livewire\StockIn\Index as StockInIndex;
 use App\Livewire\StockOut\Index as StockOutIndex;
+use App\Livewire\StockTransfer\Index as StockTransferIndex;
 use App\Livewire\Supplier\Index as SupplierIndex;
 use App\Livewire\Warehouse\Index as WarehouseIndex;
 use Illuminate\Support\Facades\Route;
@@ -40,6 +41,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/purchase-orders', PurchaseOrderIndex::class)
         ->name('purchase-orders.index');
+
+    Route::get('/stock-transfers', StockTransferIndex::class)
+        ->name('stock-transfers.index');
 });
 
 Route::view('profile', 'profile')
