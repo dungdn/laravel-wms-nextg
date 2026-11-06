@@ -32,6 +32,14 @@ class InventoryRepository extends BaseRepository implements InventoryRepositoryI
             ->paginate($perPage);
     }
 
+    public function findByWarehouseAndProduct(int $warehouseId, int $productId)
+    {
+        return $this->query()
+            ->where('warehouse_id', $warehouseId)
+            ->where('product_id', $productId)
+            ->first();
+    }
+
     public function updateOrCreate(array $attributes, array $values)
     {
         return $this->query()->updateOrCreate($attributes, $values);

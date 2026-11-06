@@ -20,6 +20,11 @@ class InventoryService extends BaseService
         return $this->repository->paginateWithFilters($warehouseId, $search, $perPage);
     }
 
+    public function findByWarehouseAndProduct(int $warehouseId, int $productId)
+    {
+        return $this->repository->findByWarehouseAndProduct($warehouseId, $productId);
+    }
+
     public function updateOrCreate(array $attributes, array $values)
     {
         return $this->repository->updateOrCreate($attributes, $values);

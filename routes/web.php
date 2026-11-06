@@ -4,6 +4,7 @@ use App\Livewire\Category\Index as CategoryIndex;
 use App\Livewire\Inventory\Index as InventoryIndex;
 use App\Livewire\Product\Index as ProductIndex;
 use App\Livewire\PurchaseOrder\Index as PurchaseOrderIndex;
+use App\Livewire\StockAdjustment\Index as StockAdjustmentIndex;
 use App\Livewire\StockIn\Index as StockInIndex;
 use App\Livewire\StockOut\Index as StockOutIndex;
 use App\Livewire\StockTransfer\Index as StockTransferIndex;
@@ -44,6 +45,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/stock-transfers', StockTransferIndex::class)
         ->name('stock-transfers.index');
+
+    Route::get('/stock-adjustments', StockAdjustmentIndex::class)
+        ->name('stock-adjustments.index');
 });
 
 Route::view('profile', 'profile')

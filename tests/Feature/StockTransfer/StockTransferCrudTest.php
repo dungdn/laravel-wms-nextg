@@ -362,4 +362,3 @@ class StockTransferCrudTest extends TestCase
             ->assertSee('Industrial Fan');
     }
 }
-

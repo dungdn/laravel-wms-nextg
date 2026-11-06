@@ -10,5 +10,7 @@ interface InventoryRepositoryInterface extends BaseRepositoryInterface
         int $perPage = 15
     );
 
+    public function findByWarehouseAndProduct(int $warehouseId, int $productId);
+
     public function updateOrCreate(array $attributes, array $values);
 }
