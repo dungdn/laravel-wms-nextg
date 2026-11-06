@@ -40,6 +40,64 @@ class InventoryRepository extends BaseRepository implements InventoryRepositoryI
             ->first();
     }
 
+    public function getValuationMetrics(?int $warehouseId = null): array
+    {
+        $query = $this->query()->with('product');
+
+        if ($warehouseId) {
+            $query->where('warehouse_id', $warehouseId);
+        }
+
+        $inventories = $query->get();
+
+        $totalUnits = (int) $inventories->sum('quantity');
+        $totalValuation = (float) $inventories->sum(function ($inv) {
+            return (float) ($inv->quantity * ($inv->product?->cost_price ?? 0));
+        });
+
+        $lowStockCount = $inventories->filter(fn ($inv) => $inv->quantity > 0 && $inv->quantity <= 10)->count();
+        $outOfStockCount = $inventories->filter(fn ($inv) => $inv->quantity <= 0)->count();
+
+        return [
+            'total_units' => $totalUnits,
+            'total_valuation' => $totalValuation,
+            'low_stock_count' => $lowStockCount,
+            'out_of_stock_count' => $outOfStockCount,
+        ];
+    }
+
+    public function getWarehouseStockSummary(): array
+    {
+        $inventories = $this->query()
+            ->with(['warehouse', 'product'])
+            ->get();
+
+        $grouped = $inventories->groupBy('warehouse_id');
+        $summary = [];
+
+        foreach ($grouped as $whId => $items) {
+            $warehouse = $items->first()?->warehouse;
+            if (! $warehouse) {
+                continue;
+            }
+
+            $summary[] = [
+                'warehouse_id' => $warehouse->id,
+                'warehouse_name' => $warehouse->name,
+                'warehouse_code' => $warehouse->code,
+                'total_products' => $items->count(),
+                'total_units' => (int) $items->sum('quantity'),
+                'total_valuation' => (float) $items->sum(function ($inv) {
+                    return (float) ($inv->quantity * ($inv->product?->cost_price ?? 0));
+                }),
+                'low_stock_items' => $items->filter(fn ($inv) => $inv->quantity > 0 && $inv->quantity <= 10)->count(),
+                'out_of_stock_items' => $items->filter(fn ($inv) => $inv->quantity <= 0)->count(),
+            ];
+        }
+
+        return $summary;
+    }
+
     public function updateOrCreate(array $attributes, array $values)
     {
         return $this->query()->updateOrCreate($attributes, $values);

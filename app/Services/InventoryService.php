@@ -25,6 +25,16 @@ class InventoryService extends BaseService
         return $this->repository->findByWarehouseAndProduct($warehouseId, $productId);
     }
 
+    public function getValuationMetrics(?int $warehouseId = null): array
+    {
+        return $this->repository->getValuationMetrics($warehouseId);
+    }
+
+    public function getWarehouseStockSummary(): array
+    {
+        return $this->repository->getWarehouseStockSummary();
+    }
+
     public function updateOrCreate(array $attributes, array $values)
     {
         return $this->repository->updateOrCreate($attributes, $values);

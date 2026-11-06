@@ -285,4 +285,3 @@ class StockAdjustmentCrudTest extends TestCase
             ->assertSee('Heavy Duty Stapler');
     }
 }
-

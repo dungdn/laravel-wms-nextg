@@ -12,5 +12,9 @@ interface InventoryRepositoryInterface extends BaseRepositoryInterface
 
     public function findByWarehouseAndProduct(int $warehouseId, int $productId);
 
+    public function getValuationMetrics(?int $warehouseId = null): array;
+
+    public function getWarehouseStockSummary(): array;
+
     public function updateOrCreate(array $attributes, array $values);
 }
