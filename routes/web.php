@@ -3,6 +3,7 @@
 use App\Livewire\Category\Index as CategoryIndex;
 use App\Livewire\Inventory\Index as InventoryIndex;
 use App\Livewire\Product\Index as ProductIndex;
+use App\Livewire\PurchaseOrder\Index as PurchaseOrderIndex;
 use App\Livewire\StockIn\Index as StockInIndex;
 use App\Livewire\StockOut\Index as StockOutIndex;
 use App\Livewire\Supplier\Index as SupplierIndex;
@@ -36,6 +37,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/stock-outs', StockOutIndex::class)
         ->name('stock-outs.index');
+
+    Route::get('/purchase-orders', PurchaseOrderIndex::class)
+        ->name('purchase-orders.index');
 });
 
 Route::view('profile', 'profile')

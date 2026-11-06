@@ -294,4 +294,3 @@ class StockOutCrudTest extends TestCase
             ->assertSee('Gaming Monitor');
     }
 }
-

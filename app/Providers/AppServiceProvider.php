@@ -6,12 +6,14 @@ use App\Repositories\CategoryRepository;
 use App\Repositories\Contracts\CategoryRepositoryInterface;
 use App\Repositories\Contracts\InventoryRepositoryInterface;
 use App\Repositories\Contracts\ProductRepositoryInterface;
+use App\Repositories\Contracts\PurchaseOrderRepositoryInterface;
 use App\Repositories\Contracts\StockInRepositoryInterface;
 use App\Repositories\Contracts\StockOutRepositoryInterface;
 use App\Repositories\Contracts\SupplierRepositoryInterface;
 use App\Repositories\Contracts\WarehouseRepositoryInterface;
 use App\Repositories\InventoryRepository;
 use App\Repositories\ProductRepository;
+use App\Repositories\PurchaseOrderRepository;
 use App\Repositories\StockInRepository;
 use App\Repositories\StockOutRepository;
 use App\Repositories\SupplierRepository;
@@ -58,6 +60,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             StockOutRepositoryInterface::class,
             StockOutRepository::class
+        );
+
+        $this->app->bind(
+            PurchaseOrderRepositoryInterface::class,
+            PurchaseOrderRepository::class
         );
     }
 
